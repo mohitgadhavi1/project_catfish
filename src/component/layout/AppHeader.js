@@ -14,7 +14,12 @@ function AppHeader() {
 				background: colorBgContainer,
 			}}
 		>
-			<div className="flex justify-end">hello world</div>
+			<div className="flex flex-wrap justify-end">
+				<div className=" w-[10%] flex flex-wrap justify-around">
+					<Link href={"/"}>Home</Link>
+					<Link href={"/profile"}>Profile</Link>
+				</div>
+			</div>
 		</Header>
 	);
 }
