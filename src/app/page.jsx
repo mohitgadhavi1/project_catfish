@@ -11,12 +11,11 @@ export default function Home() {
 	return (
 		<div
 			style={{
-				padding: 24,
 				minHeight: 360,
-				background: colorBgContainer,
+				// background: colorBgContainer,
 			}}
 		>
-			Bill is a cat.
+			Home Page
 		</div>
 	);
 }

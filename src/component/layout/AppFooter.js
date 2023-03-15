@@ -8,7 +8,7 @@ function AppFooter() {
 				textAlign: "center",
 			}}
 		>
-			Ant Design ©2023 Created by Ant UED
+			Crafted by Mohit
 		</Footer>
 	);
 }
