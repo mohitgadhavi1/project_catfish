@@ -1,6 +1,7 @@
 "use client";
 import "./globals.css";
-import { Layout } from "antd";
+import { Layout, ConfigProvider, theme } from "antd";
+import { useState } from "react";
 import AppHeader from "../component/layout/AppHeader";
 import AppSidebar from "../component/layout/AppSidebar";
 import AppFooter from "../component/layout/AppFooter";
@@ -14,28 +15,39 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+	const { defaultAlgorithm, darkAlgorithm } = theme;
+	const [isDarkMode, setIsDarkMode] = useState(true);
+	const handleClick = () => {
+		setIsDarkMode((previousValue) => !previousValue);
+	};
 	return (
 		<html lang="en">
 			<body>
-				<Layout
-					style={{
-						minHeight: "100vh",
+				<ConfigProvider
+					theme={{
+						algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
 					}}
 				>
-					<AppSidebar />
-					<Layout className="site-layout">
-						<AppHeader />
-						<Content
-							style={{
-								margin: "0 16px",
-							}}
-						>
-							<AppBreadcrumb />
-							{children}
-						</Content>
-						<AppFooter />
+					<Layout
+						style={{
+							minHeight: "100vh",
+						}}
+					>
+						<AppSidebar />
+						<Layout className="site-layout">
+							<AppHeader />
+							<Content
+								style={{
+									margin: "0 16px",
+								}}
+							>
+								<AppBreadcrumb />
+								{children}
+							</Content>
+							<AppFooter />
+						</Layout>
 					</Layout>
-				</Layout>
+				</ConfigProvider>
 			</body>
 		</html>
 	);

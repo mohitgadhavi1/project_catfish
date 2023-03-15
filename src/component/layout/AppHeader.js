@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Layout, theme } from "antd";
+import { MdOutlineAccountCircle } from "react-icons/md";
 const { Header } = Layout;
 
 function AppHeader() {
@@ -15,9 +16,11 @@ function AppHeader() {
 			}}
 		>
 			<div className="flex flex-wrap justify-end">
-				<div className=" w-[10%] flex flex-wrap justify-around">
+				<div className=" w-[10%] flex flex-wrap  items-center justify-around">
 					<Link href={"/"}>Home</Link>
-					<Link href={"/profile"}>Profile</Link>
+					<Link href={"/profile"}>
+						<MdOutlineAccountCircle size={36} className="" />
+					</Link>
 				</div>
 			</div>
 		</Header>

@@ -22,12 +22,7 @@ function AppSidebar() {
 					background: "rgba(255, 255, 255, 0.2)",
 				}}
 			/>
-			<Menu
-				theme="dark"
-				defaultSelectedKeys={["1"]}
-				mode="inline"
-				items={items}
-			/>
+			<Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
 		</Sider>
 	);
 }
@@ -35,15 +30,14 @@ function AppSidebar() {
 export default AppSidebar;
 
 const items = [
-	getItem("Option 1", "1", <PieChartOutlined />),
-	getItem("Option 2", "2"),
-	getItem("User", "sub1", <UserOutlined />, [
-		getItem("Tom", "3"),
-		getItem("Bill", "4"),
-		getItem("Alex", "5"),
+	getItem("Stack", "1", <PieChartOutlined />),
+	getItem("Linked List", "2", null, [
+		getItem("Singly", "3"),
+		getItem("Doubly", "4"),
+		getItem("Circular", "5"),
+		getItem("Circular Doubly", "6"),
 	]),
-	getItem("Team", "sub2"),
-	getItem("Files", "9", <FileOutlined />),
+	// getItem("Heap", "sub1", <UserOutlined />),
 ];
 function getItem(label, key, icon, children) {
 	return {
