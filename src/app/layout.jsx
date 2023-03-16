@@ -1,56 +1,60 @@
 "use client";
 import "./globals.css";
-import { Layout, ConfigProvider, theme } from "antd";
-import { useState } from "react";
-import AppHeader from "../component/layout/AppHeader";
-import AppSidebar from "../component/layout/AppSidebar";
-import AppFooter from "../component/layout/AppFooter";
-import AppBreadcrumb from "../component/layout/AppBreadcrumb";
 import { store } from "../../store";
 import { Provider } from "react-redux";
-
+import { ConfigProvider, Layout, theme } from "antd";
+import { useSelector } from "react-redux";
+import AppBreadcrumb from "@/component/layout/AppBreadcrumb";
+import AppHeader from "@/component/layout/AppHeader";
+import AppSidebar from "@/component/layout/AppSidebar";
+import AppFooter from "@/component/layout/AppFooter";
 const { Content } = Layout;
 
-// export const metadata = {
-// 	title: "Playground",
-// 	description: "comming soon",
-// };
-
 export default function RootLayout({ children }) {
-	const { defaultAlgorithm, darkAlgorithm } = theme;
-	const [isDarkMode, setIsDarkMode] = useState(true);
-
 	return (
-		<html lang="en">
-			<Provider store={store}>
+		<Provider store={store}>
+			<html lang="en">
 				<body className="dark:text-white dark:bg-[#2C3333]">
-					<ConfigProvider
-						theme={{
-							algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+					<ChildLayout>{children}</ChildLayout>
+				</body>
+			</html>
+		</Provider>
+	);
+}
+
+function ChildLayout({ children }) {
+	const { defaultAlgorithm, darkAlgorithm } = theme;
+	const { darkmode: isDarkMode } = useSelector((state) => state.layout);
+	//.layout.darkmode
+	console.log("isDarkMode", isDarkMode);
+	// const {
+	// 	token: { colorBgContainer },
+	// } = theme.useToken();
+	return (
+		<ConfigProvider
+			theme={{
+				algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+			}}
+		>
+			<Layout
+				style={{
+					minHeight: "100vh",
+				}}
+			>
+				<AppHeader />
+				<Layout className="site-layout">
+					<AppSidebar />
+					<Content
+						style={{
+							margin: "0 16px",
 						}}
 					>
-						<Layout
-							style={{
-								minHeight: "100vh",
-							}}
-						>
-							<AppSidebar />
-							<Layout className="site-layout">
-								<AppHeader />
-								<Content
-									style={{
-										margin: "0 16px",
-									}}
-								>
-									<AppBreadcrumb />
-									{children}
-								</Content>
-								<AppFooter />
-							</Layout>
-						</Layout>
-					</ConfigProvider>
-				</body>
-			</Provider>
-		</html>
+						<AppBreadcrumb />
+						{children}
+					</Content>
+					{/* <AppFooter /> */}
+				</Layout>
+			</Layout>
+		</ConfigProvider>
 	);
 }

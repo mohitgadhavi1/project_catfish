@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React from "react";
 import { Layout, Menu, theme } from "antd";
 import {
 	FileOutlined,
@@ -7,12 +8,12 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 const { Sider } = Layout;
-
+import { useSelector, useDispatch } from "react-redux";
+import { toggleSidebar } from "../../app/layout.slice";
 function AppSidebar() {
-	const [collapsed, setCollapsed] = useState(false);
-	{
-		/* <Link href={"/"}>Home</Link> */
-	}
+	const dispatch = useDispatch();
+	const { siderCollapsed: collapsed } = useSelector((state) => state.layout);
+	console.log("collapsed", collapsed);
 	const items = [
 		getItem(<Link href={"/stack"}>Stack</Link>, "1", <PieChartOutlined />),
 		getItem("Linked List", "2", null, [
@@ -33,11 +34,11 @@ function AppSidebar() {
 			}}
 			collapsible
 			collapsed={collapsed}
-			onCollapse={(value) => setCollapsed(value)}
+			onCollapse={(value) => dispatch(toggleSidebar())}
 		>
-			<div className=" min-h-[30px] flex justify-center m-4 ">
+			{/* <div className=" min-h-[30px] flex justify-center m-4 ">
 				{!collapsed && <p className="text-white">Welcome User</p>}
-			</div>
+			</div> */}
 
 			<Menu
 				// defaultSelectedKeys={["1"]}
