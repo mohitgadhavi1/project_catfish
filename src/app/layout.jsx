@@ -26,7 +26,7 @@ function ChildLayout({ children }) {
 	const { defaultAlgorithm, darkAlgorithm } = theme;
 	const { darkmode: isDarkMode } = useSelector((state) => state.layout);
 	//.layout.darkmode
-	console.log("isDarkMode", isDarkMode);
+
 	// const {
 	// 	token: { colorBgContainer },
 	// } = theme.useToken();
