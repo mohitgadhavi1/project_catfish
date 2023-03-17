@@ -13,19 +13,6 @@ import { toggleSidebar } from "../../app/layout.slice";
 function AppSidebar() {
 	const dispatch = useDispatch();
 	const { siderCollapsed: collapsed } = useSelector((state) => state.layout);
-	console.log("collapsed", collapsed);
-	const items = [
-		getItem(<Link href={"/stack"}>Stack</Link>, "1", <PieChartOutlined />),
-		getItem(<Link href={"/queue"}>Queue</Link>, "2", <PieChartOutlined />),
-		getItem("Linked List", "3", null, [
-			getItem(<Link href={"/linkedlist"}>Singly</Link>, "4"),
-			getItem(<Link href={"/linkedlist"}>Doubly</Link>, "5"),
-			getItem(<Link href={"/linkedlist"}>Circular</Link>, "6"),
-			getItem(<Link href={"/linkedlist"}>Circular Doubly</Link>, "7"),
-		]),
-		getItem(<Link href={"/tree"}>Tree</Link>, "8", <PieChartOutlined />),
-		getItem(<Link href={"/graph"}>Graph</Link>, "9", <PieChartOutlined />),
-	];
 
 	return (
 		<Sider
@@ -45,13 +32,28 @@ function AppSidebar() {
 			<Menu
 				// defaultSelectedKeys={["1"]}
 				mode="inline"
-				items={items}
+				items={Items()}
 			/>
 		</Sider>
 	);
 }
 
 export default AppSidebar;
+
+function Items() {
+	return [
+		getItem(<Link href={"/stack"}>Stack</Link>, "1", <PieChartOutlined />),
+		getItem(<Link href={"/queue"}>Queue</Link>, "2", <PieChartOutlined />),
+		getItem("Linked List", "3", null, [
+			getItem(<Link href={"/linkedlist"}>Singly</Link>, "4"),
+			getItem(<Link href={"/linkedlist"}>Doubly</Link>, "5"),
+			getItem(<Link href={"/linkedlist"}>Circular</Link>, "6"),
+			getItem(<Link href={"/linkedlist"}>Circular Doubly</Link>, "7"),
+		]),
+		getItem(<Link href={"/tree"}>Tree</Link>, "8", <PieChartOutlined />),
+		getItem(<Link href={"/graph"}>Graph</Link>, "9", <PieChartOutlined />),
+	];
+}
 
 function getItem(label, key, icon, children) {
 	return {

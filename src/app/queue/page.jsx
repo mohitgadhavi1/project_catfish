@@ -1,7 +1,5 @@
 import React from "react";
 
-function Queue() {
+export default function Queue() {
 	return <div>Queue</div>;
 }
-
-export default Queue;
