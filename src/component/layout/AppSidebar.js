@@ -16,13 +16,15 @@ function AppSidebar() {
 	console.log("collapsed", collapsed);
 	const items = [
 		getItem(<Link href={"/stack"}>Stack</Link>, "1", <PieChartOutlined />),
-		getItem("Linked List", "2", null, [
-			getItem("Singly", "3"),
-			getItem("Doubly", "4"),
-			getItem("Circular", "5"),
-			getItem("Circular Doubly", "6"),
+		getItem(<Link href={"/queue"}>Queue</Link>, "2", <PieChartOutlined />),
+		getItem("Linked List", "3", null, [
+			getItem(<Link href={"/linkedlist"}>Singly</Link>, "4"),
+			getItem(<Link href={"/linkedlist"}>Doubly</Link>, "5"),
+			getItem(<Link href={"/linkedlist"}>Circular</Link>, "6"),
+			getItem(<Link href={"/linkedlist"}>Circular Doubly</Link>, "7"),
 		]),
-		// getItem("Heap", "sub1", <UserOutlined />),
+		getItem(<Link href={"/tree"}>Tree</Link>, "8", <PieChartOutlined />),
+		getItem(<Link href={"/graph"}>Graph</Link>, "9", <PieChartOutlined />),
 	];
 
 	return (
