@@ -12,9 +12,10 @@ export default function Selectoperation() {
 	const [intVal, setIntVal] = useState("");
 
 	return (
-		<div className="w-full">
-			<div className="flex w-[80%]">
+		<div className="flex justify-center w-full">
+			<div className="flex w-[50%]">
 				<Input
+					disabled={selectedValue !== "push( )"}
 					value={intVal}
 					onChange={(e) => setIntVal(e.target.value)}
 					addonAfter={
@@ -32,9 +33,10 @@ export default function Selectoperation() {
 					}
 				/>
 				<Button
-					onClick={() =>
-						dispatch(customizeArr({ name: intVal, type: selectedValue }))
-					}
+					onClick={() => {
+						dispatch(customizeArr({ name: intVal, type: selectedValue }));
+						setIntVal("");
+					}}
 					className="ml-4"
 				>
 					Submit
