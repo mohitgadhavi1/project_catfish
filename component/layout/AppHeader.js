@@ -1,36 +1,35 @@
 import React from "react";
 import Link from "next/link";
-import { Dropdown, Layout, theme } from "antd";
+import { Dropdown, Layout, Typography } from "antd";
 import { MdOutlineAccountCircle } from "react-icons/md";
 const { Header } = Layout;
 
 function AppHeader() {
-	const {
-		token: { colorBgContainer },
-	} = theme.useToken();
 	return (
 		<Header
 			style={{
-				padding: 0,
-				background: "black",
-				borderBottom: "0.1px solid #2C3333",
+				background: "transparent",
+				// borderBottom: "1px solid gray",
 			}}
 		>
-			<div className="flex h-full flex-wrap justify-end">
-				<div className=" w-[10%]  flex flex-wrap  items-center justify-around">
-					{/* <Link href={"/"}>Home</Link> */}
-					{/* <Link href={"/profile"}>
-						<MdOutlineAccountCircle size={36} className="" />
-					</Link> */}
+			<div
+				style={{
+					display: "flex",
+					height: "100%",
+					justifyContent: "space-between",
+					alignItems: "center",
+				}}
+			>
+				<div>
+					<Typography.Title level={3}>Data Structures</Typography.Title>
+				</div>
+				<div className=" w-[10%] mr-10  flex flex-wrap  items-center justify-around">
 					<Dropdown
 						menu={{
 							items: Items(),
 						}}
 					>
-						<MdOutlineAccountCircle
-							className={`cursor-pointer hover:text-[${colorBgContainer}]`}
-							size={36}
-						/>
+						<MdOutlineAccountCircle style={{ cursor: "pointer" }} size={36} />
 					</Dropdown>
 				</div>
 			</div>

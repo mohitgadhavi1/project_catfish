@@ -9,20 +9,21 @@ import {
 import Link from "next/link";
 const { Sider } = Layout;
 import { useSelector, useDispatch } from "react-redux";
-import { toggleSidebar } from "../../app/layout.slice";
+import { toggleSidebar } from "../../pages/layout.slice";
 function AppSidebar() {
 	const dispatch = useDispatch();
 	const { siderCollapsed: collapsed } = useSelector((state) => state.layout);
 
 	return (
 		<Sider
-			theme="light"
+			// theme="light"
 			style={{
-				backgroundColor: "black",
-				borderRight: "0.1px solid #2C3333",
+				background: "transparent",
+				// borderRight: "1px solid gray",
+				// border: "1px solid black",
 			}}
-			collapsible
-			collapsed={collapsed}
+			// collapsible
+			collapsed={!collapsed}
 			onCollapse={(value) => dispatch(toggleSidebar())}
 		>
 			{/* <div className=" min-h-[30px] flex justify-center m-4 ">
@@ -30,6 +31,7 @@ function AppSidebar() {
 			</div> */}
 
 			<Menu
+				style={{ border: 0, background: "transparent" }}
 				// defaultSelectedKeys={["1"]}
 				mode="inline"
 				items={Items()}
