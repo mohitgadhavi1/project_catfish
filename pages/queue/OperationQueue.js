@@ -1,10 +1,9 @@
-"use client";
 import { Button, Input, Select } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { StackArr } from "./stack.slice";
+import { QueueArr } from "./queueSlice";
 
-export default function Selectoperation() {
+export default function OperationQueue() {
   const dispatch = useDispatch();
   const [selectedValue, setSelectedValue] = useState(
     typesOfOperations[0] + "( )"
@@ -34,7 +33,7 @@ export default function Selectoperation() {
         />
         <Button
           onClick={() => {
-            dispatch(StackArr({ name: intVal, type: selectedValue }));
+            dispatch(QueueArr({ name: intVal, type: selectedValue }));
             setIntVal("");
           }}
           className="ml-4"
