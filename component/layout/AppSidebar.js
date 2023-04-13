@@ -5,6 +5,8 @@ import Link from "next/link";
 const { Sider } = Layout;
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "../../pages/layout.slice";
+import { routes } from "../../routes";
+
 function AppSidebar() {
 	const dispatch = useDispatch();
 	const { siderCollapsed: collapsed } = useSelector((state) => state.layout);
@@ -31,11 +33,14 @@ export default AppSidebar;
 
 function Items() {
 	return [
-		getItem(<Link href={"/datastructures/stack"}>Stack</Link>, "1"),
-		getItem(<Link href={"/datastructures/queue"}>Queue</Link>, "2"),
-		getItem(<Link href={"/datastructures/linkedlist"}>Linked list</Link>, "3"),
-		getItem(<Link href={"/datastructures/tree"}>Tree</Link>, "8"),
-		getItem(<Link href={"/datastructures/graph"}>Graph</Link>, "9"),
+		getItem(<Link href={routes.dataStructure.stack}>Stack</Link>, "1"),
+		getItem(<Link href={routes.dataStructure.queue}>Queue</Link>, "2"),
+		getItem(
+			<Link href={routes.dataStructure.linked_list}>Linked list</Link>,
+			"3"
+		),
+		getItem(<Link href={routes.dataStructure.tree}>Tree</Link>, "8"),
+		getItem(<Link href={routes.dataStructure.graph}>Graph</Link>, "9"),
 	];
 }
 

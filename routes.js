@@ -1,4 +1,4 @@
-const routes = {
+export const routes = {
 	dataStructure: {
 		_self: "data_structures",
 		stack: "data_structures/stack",

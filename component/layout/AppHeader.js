@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Dropdown, Layout, Menu, Typography } from "antd";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { useRouter } from "next/router";
+import { routes } from "../../routes";
 const { Header } = Layout;
 
 function AppHeader() {
@@ -62,10 +63,14 @@ export default AppHeader;
 
 function HeaderMenu() {
 	const router = useRouter();
-	const [current, setCurrent] = useState("datastructures");
+	const [current, setCurrent] = useState(routes.dataStructure.stack);
 	const onClick = (e) => {
-		router.replace(e.key);
-		setCurrent(e.key);
+		// router.replace(
+		// 	e.key === "data_structures" ? routes.dataStructure.stack : e.key
+		// );
+		// setCurrent(
+		// 	e.key === "data_structures" ? routes.dataStructure.stack : e.key
+		// );
 	};
 	return (
 		<Menu
